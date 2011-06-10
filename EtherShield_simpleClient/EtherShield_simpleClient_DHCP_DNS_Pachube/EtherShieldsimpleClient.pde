@@ -1,5 +1,5 @@
 //--------------------------------------------------------
-//   EtherShield example: simpleClient
+//   EtherShield examples: simple client functions
 //
 //   simple client code layer:
 //
@@ -63,10 +63,10 @@ void printIP( uint8_t *buf ) {
 //------------------------------------------------------------------------------------------------
 // Manual entry ip addresses only
 //------------------------------------------------------------------------------------------------
-void ethernet_setup(byte* mymac,byte* myip,byte* gateway,byte* server, int port)
+void ethernet_setup(byte* mymac,byte* myip,byte* gateway,byte* server, int port,int spipin)
 {
   es.ES_enc28j60SpiInit();
-  es.ES_enc28j60Init(mymac);
+  es.ES_enc28j60Init(mymac,spipin);
   es.ES_init_ip_arp_udp_tcp(mymac, myip, port);
   es.ES_client_set_gwip(gateway);
   es.ES_client_set_wwwip(server);
@@ -82,13 +82,13 @@ int ethernet_ready()
 //------------------------------------------------------------------------------------------------
 // DHCP only
 //------------------------------------------------------------------------------------------------
-void ethernet_setup_dhcp(byte* in_mymac,byte* in_websrvip, int in_port)
+void ethernet_setup_dhcp(byte* in_mymac,byte* in_websrvip, int in_port,int spipin)
 {
   mymac = in_mymac;
   websrvip = in_websrvip;
   
   es.ES_enc28j60SpiInit();
-  es.ES_enc28j60Init(mymac);
+  es.ES_enc28j60Init(mymac,spipin);
   es.ES_client_set_wwwip(websrvip);  // target web server
   port = in_port;
 }
@@ -171,13 +171,13 @@ int ethernet_ready_dhcp()
 //------------------------------------------------------------------------------------------------
 // DHCP and DNS
 //------------------------------------------------------------------------------------------------
-void ethernet_setup_dhcp_dns(byte* in_mymac,char* in_webserver_vhost ,int in_port)
+void ethernet_setup_dhcp_dns(byte* in_mymac,char* in_webserver_vhost ,int in_port,int spipin)
 {
   mymac = in_mymac;
   webserver_vhost = in_webserver_vhost;
   
   es.ES_enc28j60SpiInit();
-  es.ES_enc28j60Init(mymac);
+  es.ES_enc28j60Init(mymac,spipin);
   port = in_port;
 }
 

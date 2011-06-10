@@ -49,7 +49,7 @@ void setup()
   Serial.begin(9600);
   Serial.println("EtherShield_simpleClient_Pachube");
   
-  ethernet_setup(mac,ip,gateway,server,80);
+  ethernet_setup(mac,ip,gateway,server,80,8); // Last two: PORT and SPI PIN: 8 for Nanode, 10 for nuelectronics
 }
 
 void loop()

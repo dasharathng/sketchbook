@@ -34,8 +34,8 @@ byte ip[4] =      {192,168,1,8};
 byte gateway[4] = {192,168,1,1};
 byte server[4] =  {85, 92, 86, 84};
 
-#define HOST "www.yourdomain.org"
-#define API "/emoncms/api/api.php?json="
+#define HOST ""  // Blank "" if on your local network: www.yourdomain.org if not
+#define API "/emoncms/api/post.php?apikey=XXXXXXXXXXXXXXXXX&json="
 
 unsigned long lastupdate;
 

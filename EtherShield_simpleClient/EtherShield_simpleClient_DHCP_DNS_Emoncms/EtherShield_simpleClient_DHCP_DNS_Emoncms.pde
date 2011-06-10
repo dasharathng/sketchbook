@@ -32,7 +32,7 @@
 byte mac[6] =     { 0x54,0x55,0x38,0x12,0x01,0x23};
 
 #define HOST "www.yourdomain.org"
-#define API "/emoncms/api/api.php?json="
+#define API "/emoncms/api/post.php?apikey=XXXXXXXXXXXXXXXXX&json="
 
 unsigned long lastupdate;
 
@@ -45,7 +45,7 @@ void setup()
   Serial.begin(9600);
   Serial.println("EtherShield_simpleClient_DHCP_DNS_Emoncms");
   
-  ethernet_setup_dhcp_dns(mac,HOST,80);
+  ethernet_setup_dhcp_dns(mac,HOST,80,8); // Last two: PORT and SPI PIN: 8 for Nanode, 10 for nuelectronics
 }
 
 void loop()
